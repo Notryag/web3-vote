@@ -1,40 +1,42 @@
 'use client'
-import { Input } from '@chakra-ui/react';
+import { Button, Input, useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import useEthers from '../hooks/useEthers';
-import { ethers } from 'ethers'
 
 const Mandate: React.FC = () => {
     const [input1, setInput1] = useState('');
     const [input2, setInput2] = useState('');
-    const [contract, setContract] = useState<ethers.Contract | null>(null)
 
+    const {contract, account} =  useEthers()
+    const toast = useToast()
 
     async function getHost() {
         const host = await contract?.host()
-        console.log(host, 'hoset')
         setInput1(host)
     }
 
     const handleMandate = async () => { 
+        if(!input2) {
+            toast({
+                title: '请输入投票人地址',
+                status: 'error',
+                duration: 9000,
+                isClosable: true,
+              })
+            return
+        }
+        if(!contract) {
+            return
+        }
         const mandateArress = input2.split('\n')
         const tx = await contract?.mandate(mandateArress)
         await tx?.wait()
         console.log('mandate success')
     }
 
-
-
-    // const ethersContract = useEthers();
-
     useEffect(() => {
-        async function init() {
-            const {contract} = await useEthers();
-            setContract(contract)
-            await getHost()
-        }
-        init()
-    }, [])
+        getHost()
+    }, [contract, account])
 
 
     const handleInputChange2 = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,19 +46,17 @@ const Mandate: React.FC = () => {
     return (
         <div>
             <h1>Mandate Page</h1>
-            {/* Add your content here */}
             <div>
                 主持人
-                <Input type="text" disabled value={input1} />
+                <Input type="text" disabled defaultValue={input1} readOnly/>
             </div>
             <div>
                 投票人地址
                 <Input type="text" value={input2} onChange={handleInputChange2} />
             </div>
             <div>
-                <button onClick={handleMandate}>分发投票权</button>
+                <Button onClick={handleMandate}>分发投票权</Button>
             </div>
-            <button onClick={getHost}>get host</button>
         </div>
     );
 };

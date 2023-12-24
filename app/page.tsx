@@ -1,12 +1,19 @@
-import Link from "next/link";
+'use client'
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import React from 'react'
 
-export default function Home() {
+export default function Home({children}: {
+  children: React.ReactNode
+}) {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push('/mandate')
+  },[])
   return (
     <main className="">
-      web vote
-      <Link href='/about' color='blue.400' _hover={{ color: 'blue.500' }}>
-        About
-      </Link>
+      {children}
     </main>
   )
 }

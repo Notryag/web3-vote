@@ -1,0 +1,5 @@
+describe('Vote', () => {
+    describe('describe', () => {
+        
+    })
+})

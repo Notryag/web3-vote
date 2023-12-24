@@ -5,14 +5,14 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@openzeppelin/contracts':
+    specifier: ^5.0.1
+    version: 5.0.1
   hardhat:
     specifier: ^2.19.2
     version: 2.19.2(ts-node@10.9.2)(typescript@5.3.3)
 
 devDependencies:
-  '@OpenZeppelin/contracts':
-    specifier: npm:@openzeppelin/contracts@^5.0.1
-    version: /@openzeppelin/contracts@5.0.1
   '@nomicfoundation/hardhat-chai-matchers':
     specifier: ^2.0.0
     version: 2.0.2(@nomicfoundation/hardhat-ethers@3.0.5)(chai@4.3.10)(ethers@6.9.0)(hardhat@2.19.2)
@@ -827,7 +827,7 @@ packages:
 
   /@openzeppelin/contracts@5.0.1:
     resolution: {integrity: sha512-yQJaT5HDp9hYOOp4jTYxMsR02gdFZFXhewX5HW9Jo4fsqSVqqyIO/xTHdWDaKX5a3pv1txmf076Lziz+sO7L1w==}
-    dev: true
+    dev: false
 
   /@scure/base@1.1.3:
     resolution: {integrity: sha512-/+SgoRjLq7Xlf0CWuLHq2LUZeL/w65kfzAPG5NH9pcmBhs+nunQTn4gvdwgMTIXnt9b2C/1SeL2XiysZEyIC9Q==}

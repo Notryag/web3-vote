@@ -3,11 +3,13 @@
 /* eslint-disable */
 import type * as openZeppelin from "./@OpenZeppelin";
 export type { openZeppelin };
+import type * as openzeppelin from "./@openzeppelin";
+export type { openzeppelin };
 import type * as contracts from "./contracts";
 export type { contracts };
 export * as factories from "./factories";
-export type { Ownable } from "./@OpenZeppelin/contracts/access/Ownable";
-export { Ownable__factory } from "./factories/@OpenZeppelin/contracts/access/Ownable__factory";
+export type { Ownable } from "./@openzeppelin/contracts/access/Ownable";
+export { Ownable__factory } from "./factories/@openzeppelin/contracts/access/Ownable__factory";
 export type { Lock } from "./contracts/Lock";
 export { Lock__factory } from "./factories/contracts/Lock__factory";
 export type { Vote } from "./contracts/Vote";
